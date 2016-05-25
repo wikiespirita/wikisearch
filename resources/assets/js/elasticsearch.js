@@ -5,27 +5,48 @@ var client = new elasticsearch.Client({
   ,log: 'trace'
 });
 
-client.search({
-  index: 'wikisearch',
-  type: 'geral',
-  body: {
-  	fields: {},
-    query: {
-      match: {
-        file_content: 'jesus'
+function search (myIndex, myType, searchText) {
+  return client.search({
+    index: myIndex,
+    type: myType,
+    body: {
+      fields: {},
+      query: {
+        match: {
+          file_content: searchText
+        }
       }
     }
-    ,hightlight: {
-      fields: {
-        file_content: 'jesus'
-      }
-    }
-  }
-}).then(function (resp) {
-    var hits = resp.hits.hits;
-}, function (err) {
+  }).then(function (resp) {
+      return hits = resp.hits.hits;
+  }, function (err) {
     console.trace(err.message);
 });
+}
+
+export { search }
+
+// client.search({
+//   index: 'wikisearch',
+//   type: 'geral',
+//   body: {
+//   	fields: {},
+//     query: {
+//       match: {
+//         file_content: 'jesus'
+//       }
+//     }
+//     ,hightlight: {
+//       fields: {
+//         file_content: 'jesus'
+//       }
+//     }
+//   }
+// }).then(function (resp) {
+//     var hits = resp.hits.hits;
+// }, function (err) {
+//     console.trace(err.message);
+// });
 
  // $this->params = [
  //            'index' => $this->index,

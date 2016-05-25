@@ -70988,6 +70988,9 @@ module.exports = Vue;
 },{"_process":45}],80:[function(require,module,exports){
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 var elasticsearch = require('elasticsearch');
 
 var client = new elasticsearch.Client({
@@ -70995,27 +70998,48 @@ var client = new elasticsearch.Client({
   log: 'trace'
 });
 
-client.search({
-  index: 'wikisearch',
-  type: 'geral',
-  body: {
-    fields: {},
-    query: {
-      match: {
-        file_content: 'jesus'
-      }
-    },
-    hightlight: {
-      fields: {
-        file_content: 'jesus'
+function search(myIndex, myType, searchText) {
+  return client.search({
+    index: myIndex,
+    type: myType,
+    body: {
+      fields: {},
+      query: {
+        match: {
+          file_content: searchText
+        }
       }
     }
-  }
-}).then(function (resp) {
-  var hits = resp.hits.hits;
-}, function (err) {
-  console.trace(err.message);
-});
+  }).then(function (resp) {
+    return hits = resp.hits.hits;
+  }, function (err) {
+    console.trace(err.message);
+  });
+}
+
+exports.search = search;
+
+// client.search({
+//   index: 'wikisearch',
+//   type: 'geral',
+//   body: {
+//   	fields: {},
+//     query: {
+//       match: {
+//         file_content: 'jesus'
+//       }
+//     }
+//     ,hightlight: {
+//       fields: {
+//         file_content: 'jesus'
+//       }
+//     }
+//   }
+// }).then(function (resp) {
+//     var hits = resp.hits.hits;
+// }, function (err) {
+//     console.trace(err.message);
+// });
 
 // $this->params = [
 //            'index' => $this->index,
@@ -71052,13 +71076,11 @@ client.search({
 
 var _elasticsearch = require('./elasticsearch.js');
 
-var _elasticsearch2 = _interopRequireDefault(_elasticsearch);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 var Vue = require('vue');
 
 Vue.use(require('vue-resource'));
+
+// import ES from './elasticsearch.js';
 
 new Vue({
 
@@ -71076,11 +71098,34 @@ new Vue({
 	},
 
 	methods: {
-		search: function search() {
-			alert('Alert');
-		}
-	}
 
+		search: function search() {
+			var result = (0, _elasticsearch.search)('wikisearch', 'geral', 'Jesus');
+		}
+
+		// search: function() {
+		// 	// alert('Alert');
+		// 	var self = this;
+		// 	// client.search(function(resp){
+		//          	self.searchResults = resp.hits.hits
+		//         	});
+		// self.client.search({
+		// 	index: 'wikisearch',
+		// 	type: 'geral',
+		// 	body: {
+		// 		fields: {},
+		// 		query: {
+		// 			match: {
+		// 			file_content: 'jesus'
+		// 			}
+		// 		}
+		// 	}
+		// }).then(function (resp) {
+		// 	var hits = resp.hits.hits;
+		// }, function (err) {
+		// 	console.trace(err.message);
+		// });
+	}
 });
 
 },{"./elasticsearch.js":80,"vue":79,"vue-resource":68}]},{},[81]);

@@ -2,9 +2,9 @@ var Vue = require('vue');
 
 Vue.use(require('vue-resource'));
 
-// import ES from './elasticsearch.js';
-
-import { search } from './elasticsearch.js';
+// Importando ElasticSearch
+// import elasticsearch from './elasticsearch.js';
+import { es_search } from './elasticsearch.js';
 
 new Vue({
 
@@ -18,36 +18,14 @@ new Vue({
 	el: 'body',
 
 	data: {
-		welcome: 'Seja bem vindo ao WikiEspírita!'
+		welcome: 'Seja bem vindo ao WikiEspírita!',
+		searchText: ''
 	},
 
 	methods: {
 
 		search: function() {
-			var result = search('wikisearch', 'geral', 'Jesus');
+			var result = es_search('wikisearch', 'geral', this.searchText);
 		}
-
-		// search: function() {
-		// 	// alert('Alert');
-		// 	var self = this;
-		// 	// client.search(function(resp){
-   //          	self.searchResults = resp.hits.hits
-   //         	});
-            // self.client.search({
-			// 	index: 'wikisearch',
-			// 	type: 'geral',
-			// 	body: {
-			// 		fields: {},
-			// 		query: {
-			// 			match: {
-			// 			file_content: 'jesus'
-			// 			}
-			// 		}
-			// 	}
-			// }).then(function (resp) {
-			// 	var hits = resp.hits.hits;
-			// }, function (err) {
-			// 	console.trace(err.message);
-			// });
 	}
 });

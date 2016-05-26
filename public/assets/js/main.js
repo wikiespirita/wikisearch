@@ -70989,35 +70989,82 @@ module.exports = Vue;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 var elasticsearch = require('elasticsearch');
 
 var client = new elasticsearch.Client({
-  host: 'wikinotes.com.br:9200',
-  log: 'trace'
+	host: 'wikinotes.com.br:9200'
+	// ,log: 'trace'
 });
 
-function search(myIndex, myType, searchText) {
-  return client.search({
-    index: myIndex,
-    type: myType,
-    body: {
-      fields: {},
-      query: {
-        match: {
-          file_content: searchText
-        }
-      }
-    }
-  }).then(function (resp) {
-    return hits = resp.hits.hits;
-  }, function (err) {
-    console.trace(err.message);
-  });
+function es_search(myIndex, myType, searchText) {
+	// return client.search({
+	client.search({
+		index: myIndex,
+		type: myType,
+		// size: 5, //Quantidade de retorno...
+		body: {
+
+			// Versão danet que funciona tb
+			// query: {
+			//              //match: {_all: searchInput}
+			//              "term": {
+			//                  "_all" : searchText
+			//              }
+			//          },
+			//          highlight: {
+			//           // "require_field_match": true,
+			//           fields: {
+			//               _all: {
+			//                   "pre_tags": [
+			//                       "<b>"
+			//                   ],
+			//                   "post_tags": [
+			//                       "</b>"
+			//                   ]
+			//               }
+			//           }
+			//          }
+			//         
+			//          // Minha versão
+			fields: {},
+			query: {
+				match: {
+					file_content: searchText
+				}
+			},
+			hightlight: {
+				// require_field_match: true,
+				fields: {
+					file_content: { force_source: true }
+					// file_content: {
+					//              "_all": {
+					//                  "pre_tags": [
+					//                      "<b>"
+					//                  ],
+					//                  "post_tags": [
+					//                      "</b>"
+					//                  ]
+					//              }
+					//             }
+				}
+			}
+		}
+	}).then(function (resp) {
+		// return hits = resp.hits.hits;
+		// return hits = resp.hits.total;
+		// return hits = resp.took;
+		// console.log(resp.hits.hits);
+		console.log(resp.hits.hits);
+	}, function (err) {
+		// console.trace(err.message);
+		// console.log(err);
+		console.log('erro');
+	});
 }
 
-exports.search = search;
+exports.es_search = es_search;
 
 // client.search({
 //   index: 'wikisearch',
@@ -71080,7 +71127,9 @@ var Vue = require('vue');
 
 Vue.use(require('vue-resource'));
 
-// import ES from './elasticsearch.js';
+// Importando ElasticSearch
+// import elasticsearch from './elasticsearch.js';
+
 
 new Vue({
 
@@ -71094,37 +71143,15 @@ new Vue({
 	el: 'body',
 
 	data: {
-		welcome: 'Seja bem vindo ao WikiEspírita!'
+		welcome: 'Seja bem vindo ao WikiEspírita!',
+		searchText: ''
 	},
 
 	methods: {
 
 		search: function search() {
-			var result = (0, _elasticsearch.search)('wikisearch', 'geral', 'Jesus');
+			var result = (0, _elasticsearch.es_search)('wikisearch', 'geral', this.searchText);
 		}
-
-		// search: function() {
-		// 	// alert('Alert');
-		// 	var self = this;
-		// 	// client.search(function(resp){
-		//          	self.searchResults = resp.hits.hits
-		//         	});
-		// self.client.search({
-		// 	index: 'wikisearch',
-		// 	type: 'geral',
-		// 	body: {
-		// 		fields: {},
-		// 		query: {
-		// 			match: {
-		// 			file_content: 'jesus'
-		// 			}
-		// 		}
-		// 	}
-		// }).then(function (resp) {
-		// 	var hits = resp.hits.hits;
-		// }, function (err) {
-		// 	console.trace(err.message);
-		// });
 	}
 });
 

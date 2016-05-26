@@ -50,7 +50,7 @@ class SearchController extends Controller
     	// $this->create_index();
     
     	// Teste 002 - IndexingController (object)
-        $criar_node = true;
+        $criar_node = false;
         
         if ( $criar_node ) {
         	echo 'Criando índice! <br><br>';
@@ -63,7 +63,7 @@ class SearchController extends Controller
         /**
          * Indexando os Arquivos PDF's
          */
-        $indexa_documentos = true;
+        $indexa_documentos = false;
         if ( $indexa_documentos ) {
 	        $pdf_folder = 'pdf/';
 	        $dir = storage_path('app/' . $this->file_path . $pdf_folder);
@@ -87,7 +87,7 @@ class SearchController extends Controller
     	$pesquisa = true;
         $this->client = new IndexingController();
     	if ( $pesquisa ) {
-	    	$results = $this->client->search('Jesus');
+	    	$results = $this->client->search('jesus');
 			// $results = $this->search('Divina');
 			// $results = $this->search('aborrecimentos');
 			// $results = $this->search('habituara');
@@ -97,6 +97,8 @@ class SearchController extends Controller
 	        $qtd = $results['hits']['total'];
 	        echo 'Quantidade de Livros: ' . $qtd . '<br><br>';
 	        
+            dd($results);
+
 	        $hightlights = $results['hits']['hits'];
 	        foreach ($hightlights as $value) {
 	            $hightlight = $value['highlight']['file.content'];

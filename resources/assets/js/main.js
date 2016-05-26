@@ -18,14 +18,21 @@ new Vue({
 	el: 'body',
 
 	data: {
-		welcome: 'Seja bem vindo ao WikiEspírita!',
+		initialMode: true,
 		searchText: ''
 	},
 
 	methods: {
 
-		search: function() {
+		searchNow: function() {
 			var result = es_search('wikisearch', 'geral', this.searchText);
+		},
+
+		changeView: function() {
+			if ( this.initialMode ) {
+				this.initialMode = false;
+				// Muda a visão para pesquisa (igual Google)
+			}			
 		}
 	}
 });

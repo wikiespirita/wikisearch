@@ -71143,14 +71143,21 @@ new Vue({
 	el: 'body',
 
 	data: {
-		welcome: 'Seja bem vindo ao WikiEspírita!',
+		initialMode: true,
 		searchText: ''
 	},
 
 	methods: {
 
-		search: function search() {
+		searchNow: function searchNow() {
 			var result = (0, _elasticsearch.es_search)('wikisearch', 'geral', this.searchText);
+		},
+
+		changeView: function changeView() {
+			if (this.initialMode) {
+				this.initialMode = false;
+				// Muda a visão para pesquisa (igual Google)
+			}
 		}
 	}
 });

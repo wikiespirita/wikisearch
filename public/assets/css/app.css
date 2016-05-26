@@ -56,11 +56,16 @@
 	}
 
     .searchBox {
-    	height: auto;
-    	width: 100%;
-    	font-size: 18px;
-    	padding: 10px;
+    	font-size: 16px;
     	color: #222;
+    	height: auto;
+    	width: 600;
+  		/*padding: 8px;*/
+  		padding: 8px;
+  		box-sizing: border-box;
+    	-webkit-box-sizing: border-box;
+    	-moz-box-sizing: border-box;
+
 /*        	border: 1px;
     	padding: 0px;
     	margin: 1px;

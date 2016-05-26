@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="token" id="token" value="{{ csrf_token() }}">
+
+    <!-- <meta http-equiv="refresh" content="2"> -->
     
     <link rel="icon" 
       type="image/png" 
@@ -18,54 +20,6 @@
 
     {{-- Styles --}}
     <link rel="stylesheet" href="{{ url('assets/css/app.css') }}">
-
-<!--    <style>
-        html, body {
-            height: 80%;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            display: table;
-            font-weight: 100;
-            font-family: 'Lato';
-            background: #f7f7f7;
-        }
-
-        .container {
-            text-align: center;
-            display: table-cell;
-            vertical-align: middle;
-        }
-
-        .content {
-            text-align: center;
-            display: inline-block;
-        }
-
-        .title {
-            font-size: 96px;
-        }
-
-        .searchBox {
-        	height: auto;
-        	width: 100%;
-        	font-size: large;
-        	padding: 10px;
-/*        	border: 1px;
-        	padding: 0px;
-        	margin: 1px;
-        	height: auto;
-        	width: 40%;
-        	position: absolute;
-        	z-index: 6;
-        	left: 0px;
-        	outline: none;
-
-*/        }
-    </style> -->
 
 </head>
 

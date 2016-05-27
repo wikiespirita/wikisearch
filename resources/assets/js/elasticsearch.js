@@ -41,9 +41,11 @@ function es_search (myIndex, myType, searchText) {
 					file_content: searchText
 				}
 			},
-			hightlight: {
+			highlight: {
 				// require_field_match: true,
 				fields: {
+					// _all: {}
+					// file_content: []
 					file_content: { force_source: true }
 					// file_content: {
 		   //              "_all": {
@@ -54,7 +56,7 @@ function es_search (myIndex, myType, searchText) {
 		   //                      "</b>"
 		   //                  ]
 		   //              }
-	    //             }
+	                // }
 				}
 			}
 		}

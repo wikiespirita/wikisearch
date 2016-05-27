@@ -26,9 +26,6 @@ new Vue({
 
 		searchNow: function() {
 			var result = es_search('wikisearch', 'geral', this.searchText);
-		},
-
-		changeView: function() {
 			if ( this.initialMode ) {
 				this.initialMode = false;
 				// Muda a visão para pesquisa (igual Google)

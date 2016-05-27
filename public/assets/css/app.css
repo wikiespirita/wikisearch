@@ -1,80 +1,140 @@
-    html, body {
-        height: 80%;
-    }
+html, body {
+    // height: 60%;
+}
 
-    body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        display: table;
-        font-weight: 100;
-        font-family: 'Lato';
-        /*background: #f7f7f7;*/
-    }
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: table;
+    font-weight: 100;
+    font-family: 'Lato';
+    /*background: #f7f7f7;*/
+}
 
-    .container {
-        text-align: center;
-        display: table-cell;
-        vertical-align: middle;
-    }
+.container {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    padding-top: 48px;
+}
 
-    .content {
-        text-align: center;
-        display: inline-block;
-    }
+.nav {
+    top: 0;
+    border-width: 0 0 1px;
+    background-color: #f2f2f2;
+    border-color: #e7e7e7;
+    position: fixed;
+    right: 0;
+    left: 0;
+    // padding: 20px;
+    display: inline-block;
+    min-height: 50px;
+    // margin-bottom: 10px;
+    z-index: 1000;
+}
 
-    .title {
-        font-size: 96px;
-    }
+.nav-logo {
+    float: left;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    // height: 50px;
+    // padding: 0px 10px; // Sem o form no menu (.nav-form)
+    // margin-top: 0;
+    // // padding: 0px 0px;
+    // line-height: 10px;
+}
 
-	.er-btn{
-		display: inline-block;
-		border: 1px solid #f2f2f2;
-		color: #757575;
-		border-radius: 5px 5px 5px 5px;
-		-webkit-border-radius: 5px 5px 5px 5px;
-		-moz-border-radius: 5px 5px 5px 5px;
-		/*font-family: Verdana;*/
-		/*font-family: arial,sans-serif;*/
-		font-family: lato;
-		font-size: 13px;
-		font-weight: bold;
-		width: auto;
-		height: auto;
-		padding: 8px 25px;
-		background-color: #f2f2f2;
-		background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1);
-		text-align: center;
-		margin: 5px;
-	}
-	.er-btn:hover, .er-btn:active{
-		background-image: -webkit-linear-gradient(top,#f8f8f8,#f1f1f1);
-    	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-		border: 1px solid #c6c6c6;
-		color: #000000;
-		background-color: #EBEBEB;
-	}
+.nav-form {
+    margin-top: 10px;
+}
 
-    .searchBox {
-    	font-size: 16px;
-    	color: #222;
-    	height: auto;
-    	width: 600;
-  		/*padding: 8px;*/
-  		padding: 8px;
-  		box-sizing: border-box;
-    	-webkit-box-sizing: border-box;
-    	-moz-box-sizing: border-box;
+.nav-button {
+    background-color: white;
+    height: 30px;
+    border: none;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    vertical-align: top;
+    margin-top: 5px;
+    // padding: 10px 10px;
+    // padding-top: 10px;
+}
 
-/*        	border: 1px;
-    	padding: 0px;
-    	margin: 1px;
-    	height: auto;
-    	width: 40%;
-    	position: absolute;
-    	z-index: 6;
-    	left: 0px;
-    	outline: none;
+.content {
 
-*/        }
+    text-align: center;
+    display: inline-block;
+}
+
+.title {
+    font-size: 96px;
+}
+
+.er-btn{
+	display: inline-block;
+	border: 1px solid #f2f2f2;
+	color: #757575;
+	border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+	/*font-family: Verdana;*/
+	/*font-family: arial,sans-serif;*/
+	font-family: lato;
+	font-size: 13px;
+	font-weight: bold;
+	width: auto;
+	height: auto;
+	padding: 8px 25px;
+	background-color: #f2f2f2;
+	background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1);
+	text-align: center;
+	margin: 5px;
+}
+.er-btn:hover, .er-btn:active{
+	background-image: -webkit-linear-gradient(top,#f8f8f8,#f1f1f1);
+	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	border: 1px solid #c6c6c6;
+	color: #000000;
+	background-color: #EBEBEB;
+}
+
+.searchBox-nav {
+    font-size: 16px;
+    color: #222;
+    height: 30px;
+    border: none;
+    max-width: 600px;
+    width: 400px;
+    text-align: left;
+    margin-top: 5px;
+    padding: 8px 5px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    // line-height: 20px;
+    // vertical-align: middle;
+    // padding-top: 15px;
+    // padding-bottom: 15px;
+    // position: relative;
+    // display: block;
+}    
+
+.searchBox {
+	font-size: 16px;
+	color: #222;
+	height: auto;
+	width: 600;
+		/*padding: 8px;*/
+		padding: 8px;
+		box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
 /*# sourceMappingURL=app.css.map */

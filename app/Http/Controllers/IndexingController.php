@@ -16,7 +16,7 @@ use Monolog\Logger;
 class IndexingController extends Controller
 {
     // ElasticSearch Settings
-    protected $host = ['wikinotes.com.br:9200'];
+    protected $host = ['wikiespirita.com.br:8200'];
     protected $client;
     protected $logger;
     protected $index = 'wikisearch';

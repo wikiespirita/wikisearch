@@ -1,7 +1,8 @@
 var elasticsearch = require('elasticsearch');
 
 var client = new elasticsearch.Client({
-  host: 'wikinotes.com.br:9200'
+  // host: 'wikinotes.com.br:9200'
+  host: 'wikiespirita.com.br:8200'
   // ,log: 'trace'
 });
 

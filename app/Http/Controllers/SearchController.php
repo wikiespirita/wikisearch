@@ -14,9 +14,9 @@ class SearchController extends Controller
 {
 
     // Variáveis
-    protected $hosts = ['wikinotes.com.br:9200'];
+    protected $hosts = ['wikiespirita.com.br:8200'];
     protected $client;
-    protected $log_path = 'elasticsearch/log/elastic.txt';
+    protected $log_path = 'elasticsearch/log/elastic.log';
     protected $file_path = 'elasticsearch/files/';
     protected $logger;
     protected $disk;

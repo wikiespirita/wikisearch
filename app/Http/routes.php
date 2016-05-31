@@ -16,3 +16,13 @@ Route::get('/', function () {
 });
 
 Route::get('/search', 'SearchController@index');
+
+/**
+  * Rotas para teste do servidor
+  *
+  * http://wikiespirita.com.br:8200/_cat/health?v
+  * http://wikiespirita.com.br:8200/_cat/nodes?v
+  * http://wikiespirita.com.br:8200/_cat/indices?v
+  * http://wikiespirita.com.br:8200/_nodes/stats/process?pretty
+  *
+  */

@@ -49,7 +49,7 @@ class IndexingController extends Controller
 //            $this->logger = ClientBuilder::defaultLogger($logfile, Logger::ERROR);
             $this->logger = ClientBuilder::defaultLogger($logfile);
         }
-        // $this->fixTimeout();
+        $this->fixTimeout();
         // print_r($this->curlParams);
         echo '<br>';
 //        $this->handler = ClientBuilder::multiHandler($this->curlParams);
@@ -335,6 +335,15 @@ class IndexingController extends Controller
 ////        $response = $this->client->indices()->putSettings($this->params);
 //        return;
         
+
+
+// CURLOPT_FTP_RESPONSE_TIMEOUT: Indefinite
+// CURLOPT_TIMEOUT: Indefinite
+// CURLOPT_TIMEOUT_MS: Indefinite
+// CURLOPT_CONNECTTIMEOUT: 300 seconds
+// CURLOPT_CONNECTTIMEOUT_MS: Indefinite
+// CURLOPT_ACCEPTTIMEOUT_MS: 60 seconds
+
         /**
          * Teste 002
          */
@@ -344,7 +353,13 @@ class IndexingController extends Controller
 //        ];
         $this->curlParams['guzzleOptions'] = [
             'curl.options'=> [
-                CURLOPT_CONNECTTIMEOUT => $timeout
+                CURLOPT_TIMEOUT => 10,
+                // CURLOPT_TIMEOUT_MS => 10,
+                // CURLOPT_CONNECTTIMEOUT => 10,
+                // CURLOPT_CONNECTTIMEOUT_MS => 10,
+                // CURLOPT_ACCEPTTIMEOUT_MS => 10,
+                // CURLE_OPERATION_TIMEOUTED => 10,
+
             ]
         ];
         

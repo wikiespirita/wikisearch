@@ -63,7 +63,7 @@ class SearchController extends Controller
         /**
          * Indexando os Arquivos PDF's
          */
-        $indexa_documentos = false;
+        $indexa_documentos = true;
         if ( $indexa_documentos ) {
 	        $pdf_folder = 'pdf/';
 	        $dir = storage_path('app/' . $this->file_path . $pdf_folder);
@@ -84,10 +84,10 @@ class SearchController extends Controller
     	/**
     	 * Pesquisando nos arquivos indexados
     	 */
-    	$pesquisa = true;
-        $this->client = new IndexingController();
-    	if ( $pesquisa ) {
-	    	$results = $this->client->search('jesus');
+    	$pesquisa = false;
+        if ( $pesquisa ) {
+	       $this->client = new IndexingController();        
+        	$results = $this->client->search('jesus');
 			// $results = $this->search('Divina');
 			// $results = $this->search('aborrecimentos');
 			// $results = $this->search('habituara');

@@ -8,19 +8,12 @@
         - 
         --}}
 
-
     <div v-if="! initialMode">
-        <nav class="nav">
-            <img class="nav-logo" src="{{ url('images/wiki_espirita_logo_teste.png') }}">
-            <form class="nav-form">
-                <input class="searchBox-nav" type="text" name="search_" placeholder="Digite aqui o que procura"
-                    v-model='searchText'                    
-                    @keyup.enter='searchNow' 
-                    >
-                <button class="nav-button" type="submit"><img src="{{ url('images/lupa.png') }}" alt=""></button>
-            </form>
-        </nav>
+        <we-searchheader logo="url('images/wiki_espirita_logo_teste.png')" lupa="url('images/lupa.png')" ></we-searchheader>
     </div>
+
+
+
 <div class="container">
     <div class="content">
         <div v-show="initialMode">

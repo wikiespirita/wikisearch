@@ -5,6 +5,8 @@ Vue.use(require('vue-resource'));
 // Importando ElasticSearch
 // import elasticsearch from './elasticsearch.js';
 import { es_search } from './elasticsearch.js';
+// import es_search from './elasticsearch.js';
+import SearchHeader from './components/SearchHeader.vue';
 
 new Vue({
 
@@ -31,5 +33,9 @@ new Vue({
 				// Muda a visão para pesquisa (igual Google)
 			}			
 		}
+	},
+
+	components: {
+		'we-searchheader': SearchHeader
 	}
 });
